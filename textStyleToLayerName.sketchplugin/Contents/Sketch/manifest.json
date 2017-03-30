@@ -10,7 +10,7 @@
   "commands" : [
     {
       "script" : "textStyleToLayerName.cocoascript",
-      "name" : "Text Style To Layer Name",
+      "name" : "Rename",
       "identifier" : "textStyleToLayerName"
     },
   ],
