@@ -43,8 +43,7 @@ function renameTextLayers(layers, document) {
     var styleSearchPredicate = NSPredicate.predicateWithFormat("objectID == %@", sharedStyleID);
     var filteredStyles = allStyles.filteredArrayUsingPredicate(styleSearchPredicate);
 
-
-    if(filteredStyles.length) {
+    if (filteredStyles.length) {
       layer.setName(filteredStyles[0].name());
     }
   });
