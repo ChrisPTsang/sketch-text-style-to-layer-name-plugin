@@ -7,7 +7,7 @@ As the name suggests, the plugin searches for all Text Layers, and replaces the 
 
 This is useful for exporting to InVision and communicating a shared Text Style name to developers through the Text Layer name.
 
-# Installing
+## Installing
 
 1. Download `textStyleToLayerName.sketchplugin` from the repo
 2. Double click the `textStyleToLayerName.sketchplugin`
