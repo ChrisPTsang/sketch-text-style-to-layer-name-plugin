@@ -1,0 +1,51 @@
+var onRun = function(context) {
+  var document = context.document;
+
+  // Get all pages in the document
+  var pages = [document pages];
+
+  var pages_loop = [pages objectEnumerator];
+
+  // loop through all pages
+  while (page = [pages_loop nextObject]) {
+    // Get all artboards on page
+    var artboards = [page artboards];
+
+    var artboards_loop = [artboards objectEnumerator];
+
+    // loop through all artboards
+    while (artboard = [artboards_loop nextObject]) {
+      renameTextLayers([artboard layers], document);
+    }
+  }
+};
+
+function processTextLayers(layers, callback) {
+  for (var i = 0; i < [layers count]; i++) {
+    var layer = [layers objectAtIndex:i];
+
+    if (layer.class() == "MSLayerGroup") {
+      // Also process child layers/groups
+      processTextLayers([layer layers], callback);
+    } else if (layer.class() == "MSTextLayer") {
+      callback(layer);
+    }
+  }
+};
+
+// Recursively traverses and unlocks a tree of layers, since layers
+// can be nested in groups
+function renameTextLayers(layers, document) {
+  processTextLayers(layers, function(layer) {
+    var sharedStyleID = layer.style().sharedObjectID();
+    var allStyles = document.documentData().layerTextStyles().objects();
+
+    var styleSearchPredicate = NSPredicate.predicateWithFormat("objectID == %@", sharedStyleID);
+    var filteredStyles = allStyles.filteredArrayUsingPredicate(styleSearchPredicate);
+
+
+    if(filteredStyles.length) {
+      layer.setName(filteredStyles[0].name());
+    }
+  });
+}

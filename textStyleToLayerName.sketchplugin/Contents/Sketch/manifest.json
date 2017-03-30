@@ -1,0 +1,22 @@
+{
+  "name" : "Text Style to Text Layer Name",
+  "identifier" : "",
+  "description" : "Replace text layer names with text style names",
+  "version" : "1.0",
+  "author" : "ChrisPTsang",
+  "homepage": "https://github.com/ChrisPTsang/sketch-text-style-to-layer-name-plugin",
+  "compatibleVersion": "40",
+  "bundleVersion": "1",
+  "commands" : [
+    {
+      "script" : "textStyleToLayerName.cocoascript",
+      "name" : "Text Style To Layer Name",
+      "identifier" : "textStyleToLayerName"
+    },
+  ],
+  "menu": {
+    "items": [
+      "textStyleToLayerName",
+    ]
+  }
+}
